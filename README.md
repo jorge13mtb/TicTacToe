@@ -1,1 +1,1 @@
-Bowling game algorithm
+Tic Tac Toe on Ruby
