@@ -32,15 +32,13 @@ class Tictactoe
 
   def is_there_a_winner?
     if @turns >= MINIMUM_NUMBER_OF_TURNS_NEEDED_TO_WIN
+      current_row = [@board[@last_row][0], @board[@last_row][1], @board[@last_row][2]]
+      current_column = [@board[0][@last_column], @board[1][@last_column], @board[2][@last_column]]
+      diagonal_1 = [@board[0][0], @board[1][1], @board[2][2]]
+      diagonal_2 = [@board[0][2], @board[1][1], @board[2][0]]
 
-      row_array = [@board[@last_row][0], @board[@last_row][1], @board[@last_row][2]]
-      column_array = [@board[0][@last_column], @board[1][@last_column], @board[2][@last_column]]
-
-      diagonal_1_array = [@board[0][0], @board[1][1], @board[2][2]] if played_in_diagonal_1?
-      diagonal_2_array = [@board[0][2], @board[1][1], @board[2][0]] if played_in_diagonal_2?
-
-      winner_in_array? row_array or winner_in_array? column_array or 
-      winner_in_array? diagonal_1_array or winner_in_array? diagonal_2_array
+      winner_in? current_row or winner_in? current_column or
+      (played_in_diagonal_1? and winner_in? diagonal_1) or (played_in_diagonal_2? and winner_in? diagonal_2)
     end
   end
 
@@ -69,7 +67,7 @@ class Tictactoe
   private
 
   def played_in_diagonal_1?
-    @last_row - @last_column = 0
+    @last_row = @last_column
   end
 
 
@@ -78,9 +76,9 @@ class Tictactoe
   end
 
 
-  def winner_in_array? array_values
-	  if all_elements_are_equals?(array_values) and not empty_box?(array_values)
-	    @game_winner = array_values[0][0]
+  def winner_in? array
+	  if all_elements_are_equals?(array) and not empty_box?(array)
+	    @game_winner = array[0][0]
     	return true
     end
     false
