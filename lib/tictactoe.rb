@@ -4,7 +4,7 @@
 =end
 
 EMPTY_BOX = "-"
-MAX_NUMBER_OF_cellS_IN_TICTACTOE = 9
+MAX_NUMBER_OF_CEllS_IN_TICTACTOE = 9
 
 class Tictactoe
 
@@ -112,6 +112,6 @@ class Tictactoe
 		    end
 	    end
 	  end
-  cells_in_game == MAX_NUMBER_OF_cellS_IN_TICTACTOE
+  cells_in_game == MAX_NUMBER_OF_CEllS_IN_TICTACTOE
   end
 end
