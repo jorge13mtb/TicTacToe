@@ -1,30 +1,35 @@
 =begin
           Class Tictactoe
-	  Jorge Chavarria Rodriguez
+          Jorge Chavarria Rodriguez
 =end
 
 EMPTY_BOX = "-"
 MAX_NUMBER_OF_CEllS_IN_TICTACTOE = 9
+MINIMUM_NUMBER_OF_TURNS_NEEDED_TO_WIN = 5
 
 class Tictactoe
 
-  attr_accessor :board
+  attr_accessor :board, :turns
 
   def initialize
     @board = [["-","-","-"],["-","-","-"],["-","-","-"]]
 	  @game_winner = :no_player
+    @turns = 0
   end
 
 
   def put_cell_at_game(row_position, column_position, game_cell)
 	  if @board[row_position][column_position] == EMPTY_BOX
 	    @board[row_position][column_position] = game_cell
+      @turns += 1
     end
   end
 
 
   def is_there_a_winner?
-    winner_in_row? or winner_in_column? or winner_in_diagonal_1? or winner_in_diagonal_2?
+    if @turns >= MINIMUM_NUMBER_OF_TURNS_NEEDED_TO_WIN
+      winner_in_row? or winner_in_column? or winner_in_diagonal_1? or winner_in_diagonal_2?
+    end
   end
 
 
@@ -44,6 +49,7 @@ class Tictactoe
 		    @board[actual_row][actual_column] = EMPTY_BOX
 	    end
   	end
+    @turns = 0
   end
 
 #          *****          These are private functions          *****
@@ -107,9 +113,7 @@ class Tictactoe
     cells_in_game = 0
 	  for current_row in (0..2)
 	    for current_column in (0..2)
-	  	  if @board[current_row][current_column] != EMPTY_BOX
-		      cells_in_game += 1
-		    end
+		    cells_in_game += 1 if @board[current_row][current_column] != EMPTY_BOX
 	    end
 	  end
   cells_in_game == MAX_NUMBER_OF_CEllS_IN_TICTACTOE

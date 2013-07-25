@@ -19,7 +19,8 @@ describe Tictactoe do
   end
 
   describe "to play" do
-    before { @tictactoe.board = [["X","0","-"],["-","-","-"],["X","0","X"]] }
+    before { @tictactoe.board = [["X","0","-"],["-","-","-"],["X","0","X"]]
+             @tictactoe.turns = 4 }
 
     it "put two cells in different places" do
 	    @tictactoe.put_cell_at_game(0,2,"X")
@@ -44,12 +45,12 @@ describe Tictactoe do
 
 
   describe "evaluate the game" do
-	  before { @tictactoe.board = [["X","-","-"],["-","-","0"],["-","-","-"]] }
+	  before { @tictactoe.board = [["X","-","-"],["-","-","0"],["-","0","-"]] 
+             @tictactoe.turns = 3 }
 	
 	  it "is there a winner in a row?" do
 	    @tictactoe.is_there_a_winner?.should be_false
 	    @tictactoe.put_cell_at_game(2,0,"0")
-	    @tictactoe.put_cell_at_game(2,1,"0")
 	    @tictactoe.put_cell_at_game(2,2,"0")
 	    @tictactoe.is_there_a_winner?.should be_true
 	    @tictactoe.winner.should == "0"
@@ -83,7 +84,8 @@ describe Tictactoe do
 
 
   describe "full board and there is a winner" do
-	  before { @tictactoe.board = [["X","0","X"],["0","X","0"],["X","0","X"]] }
+	  before { @tictactoe.board = [["X","0","X"],["0","X","0"],["X","0","X"]]
+             @tictactoe.turns = 5 }
 	
 	  it "the winner is X" do
 	    @tictactoe.is_there_a_winner?.should be_true
@@ -94,7 +96,8 @@ describe Tictactoe do
 
 
   describe "full board" do
-    before { @tictactoe.board = [["X","0","X"],["0","X","0"],["0","X","0"]] }
+    before { @tictactoe.board = [["X","0","X"],["0","X","0"],["0","X","0"]]
+             @tictactoe.turns = 4 }
 
 	  it "there is a tie" do
 	    @tictactoe.is_there_a_winner?.should be_false
