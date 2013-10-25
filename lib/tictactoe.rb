@@ -6,7 +6,7 @@
 EMPTY_BOX = "-"
 MINIMUM_NUMBER_OF_TURNS_NEEDED_TO_WIN = 5
 
-class Tictactoe
+class TicTacToe
 
   attr_accessor :board, :turns
 
@@ -76,9 +76,9 @@ class Tictactoe
 
 
   def winner_in? array
-	  if all_elements_are_equals?(array) and not empty_box?(array)
-	    @game_winner = array[0][0]
-    	return true
+    if all_elements_are_equals?(array) and not empty_box?(array)
+      @game_winner = array[0][0]
+      return true
     end
     false
   end

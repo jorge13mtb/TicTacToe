@@ -5,10 +5,10 @@
 
 require 'tictactoe.rb'
 
-describe Tictactoe do
+describe TicTacToe do
 
   before do
-	  @tictactoe = Tictactoe.new
+	  @tictactoe = TicTacToe.new
    end
 
   describe "initialize the tictactie" do
