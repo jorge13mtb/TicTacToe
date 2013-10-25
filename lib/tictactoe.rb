@@ -36,8 +36,7 @@ class TicTacToe
       diagonal_1 = [@board[0][0], @board[1][1], @board[2][2]]
       diagonal_2 = [@board[0][2], @board[1][1], @board[2][0]]
 
-      winner_in? current_row or winner_in? current_column or
-      (played_in_diagonal_1? and winner_in? diagonal_1) or (played_in_diagonal_2? and winner_in? diagonal_2)
+      winner_in? current_row or winner_in? current_column or winner_in? diagonal_1 or winner_in? diagonal_2
     end
   end
 
@@ -64,15 +63,6 @@ class TicTacToe
 #          *****          These are private methods          *****
 
   private
-
-  def played_in_diagonal_1?
-    @last_row = @last_column
-  end
-
-
-  def played_in_diagonal_2?
-    (@last_row = 1 and @last_column = 1) or @last_row - @last_column = -2 or @last_row - @last_column = 2
-  end
 
 
   def winner_in? array
