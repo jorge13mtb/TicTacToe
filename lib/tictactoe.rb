@@ -4,7 +4,6 @@
 =end
 
 EMPTY_BOX = "-"
-MAX_NUMBER_OF_CEllS_IN_TICTACTOE = 9
 MINIMUM_NUMBER_OF_TURNS_NEEDED_TO_WIN = 5
 
 class Tictactoe
@@ -86,22 +85,21 @@ class Tictactoe
 
 
   def all_elements_are_equals?(array)
-	  array.uniq.length == 1
+    array.uniq.length == 1
   end
 
 
   def empty_box?(array)
-	  array.include?(EMPTY_BOX)
+    array.include?(EMPTY_BOX)
   end
 
 
   def the_board_is_full?
-    cells_in_game = 0
-	  for current_row in (0..2)
-	    for current_column in (0..2)
-		    cells_in_game += 1 if @board[current_row][current_column] != EMPTY_BOX
-	    end
-	  end
-  cells_in_game == MAX_NUMBER_OF_CEllS_IN_TICTACTOE
+    for current_row in (0..2)
+      for current_column in (0..2)
+        false if @board[current_row][current_column] == EMPTY_BOX
+      end
+    end
+    true
   end
 end
