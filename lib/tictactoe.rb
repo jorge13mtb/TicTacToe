@@ -12,7 +12,7 @@ class TicTacToe
 
   def initialize
     @board = [["-","-","-"],["-","-","-"],["-","-","-"]]
-	  @game_winner = :no_player
+    @game_winner = :no_player
     @turns = 0
     @last_row = -1
     @last_column = -1
@@ -20,8 +20,8 @@ class TicTacToe
 
 
   def put_cell_at_game(row_position, column_position, game_cell)
-	  if @board[row_position][column_position] == EMPTY_BOX
-	    @board[row_position][column_position] = game_cell
+    if @board[row_position][column_position] == EMPTY_BOX
+      @board[row_position][column_position] = game_cell
       @turns += 1
       @last_row = row_position
       @last_column = column_position
@@ -44,24 +44,24 @@ class TicTacToe
 
   def winner
     @game_winner
-   end
+  end
 
 
   def tie?
-	  not is_there_a_winner? and the_board_is_full?
+    not is_there_a_winner? and the_board_is_full?
   end
 
 
   def clean_the_board
-	  for current_row in (0..2)
-	    for current_column in (0..2)
-		    @board[current_row][current_column] = EMPTY_BOX
-	    end
-  	end
+    for current_row in (0..2)
+      for current_column in (0..2)
+        @board[current_row][current_column] = EMPTY_BOX
+      end
+    end
     @turns = 0
   end
 
-#          *****          These are private functions          *****
+#          *****          These are private methods          *****
 
   private
 
