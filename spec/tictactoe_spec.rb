@@ -88,6 +88,7 @@ describe TicTacToe do
              @tictactoe.turns = 5 }
 	
 	  it "the winner is X" do
+	    @tictactoe.put_cell_at_game(2,2,"X")
 	    @tictactoe.is_there_a_winner?.should be_true
 	    @tictactoe.tie?.should be_false
 	    @tictactoe.winner.should == "X"

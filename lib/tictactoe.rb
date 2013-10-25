@@ -1,5 +1,5 @@
 =begin
-          Class Tictactoe
+          Class TicTacToe
           Jorge Chavarria Rodriguez
 =end
 
